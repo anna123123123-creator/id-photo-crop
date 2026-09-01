@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>证件照裁剪工具 · ID Photo Crop</title>
+<meta name="description" content="免费开源、纯浏览器运行的证件照标准尺寸裁剪工具，一寸/二寸/护照/签证等标准尺寸，拖拽定位、缩放，导出300dpi标准像素图片。不上传服务器。">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>证件照<span class="accent">裁剪</span>工具</h1>
+    <p class="tagline">上传照片，选标准证件照尺寸，拖拽定位、滑块缩放，按 300dpi 导出标准像素图片。纯本地裁剪，不做背景替换（背景替换需要 AI 抠图）。</p>
+  </header>
+
+  <main class="layout">
+    <div id="dropzone" class="dropzone">
+      <div>点击选择照片，或拖拽照片到这里</div>
+      <p>建议使用清晰的正面免冠照</p>
+      <input type="file" id="fileInput" accept="image/*">
+    </div>
+
+    <div id="stage" class="stage">
+      <section class="canvas-col">
+        <canvas id="canvas"></canvas>
+        <p class="hint">拖动照片调整位置，用下方滑块缩放</p>
+        <input id="zoomInput" type="range" min="0.5" max="2" step="0.02" value="1">
+      </section>
+      <section class="controls">
+        <div class="field">
+          <label>证件照尺寸</label>
+          <select id="sizeSelect">
+            <option value="1inch">一寸 25×35mm</option>
+            <option value="2inch">二寸 35×49mm</option>
+            <option value="small2inch">小二寸 35×45mm</option>
+            <option value="passport">护照 33×48mm</option>
+            <option value="visa_us">美签 51×51mm</option>
+          </select>
+        </div>
+        <button id="btnReset" class="btn">换一张</button>
+        <button id="btnExport" class="btn btn-primary">导出图片 ↓</button>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>MIT 协议开源，裁剪全部本地完成，不上传服务器、不追踪。</p>
+    <p>想要 AI 自动生成证件照、职业形象照、AI 换装换景 10 分钟出片？<a href="https://inzyxuashop.com/aixiezhen-yuanma.html" target="_blank" rel="noopener">看看完整版 AI 写真源码 →</a></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
